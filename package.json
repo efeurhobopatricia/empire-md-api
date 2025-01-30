@@ -1,17 +1,19 @@
 {
   "name": "empire-md-api",
   "version": "1.0.0",
-  "description": "A simple YouTube video downloader API using yt-dlp",
+  "description": "A YouTube downloader API using yt-dlp in Node.js",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.18.2",
+    "yt-dlp-exec": "^1.3.0"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14"
   },
+  "keywords": ["YouTube", "downloader", "yt-dlp", "express", "API"],
   "author": "Empire Tech",
   "license": "MIT"
 }
