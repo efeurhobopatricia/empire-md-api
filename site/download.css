@@ -43,7 +43,7 @@ table {
 }
 
 th, td {
-    padding: 15px;
+    padding: 12px;
     text-align: left;
     border: 1px solid #444;
 }
@@ -53,27 +53,42 @@ th {
     text-transform: uppercase;
 }
 
+/* API Method Styling */
+.method-get {
+    color: #17a2b8;
+    font-weight: bold;
+}
+
 /* Status Labels */
 .status-active {
     background-color: #28a745;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
+    display: inline-block;
     text-align: center;
 }
 
-/* API Test Button (Now Horizontally Arranged) */
+.status-inactive {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+}
+
+/* API Test Button */
 .action-test {
     background-color: #6c63ff;
     color: #fff;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 5px;
     display: inline-block;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
     transition: background 0.3s ease-in-out;
-    font-size: 16px;
 }
 
 .action-test:hover {
@@ -84,13 +99,13 @@ th {
 @media (max-width: 768px) {
     th, td {
         font-size: 12px;
-        padding: 10px;
+        padding: 8px;
     }
     .header h1 {
         font-size: 16px;
     }
     .action-test {
-        padding: 8px 12px;
+        padding: 6px 10px;
         font-size: 14px;
     }
 }
