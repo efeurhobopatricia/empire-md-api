@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #1e1e1e;
@@ -6,34 +7,39 @@ body {
     padding: 0;
 }
 
+/* Container */
 .container {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Header */
 .header {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: #333;
 }
 
 .header i {
     font-size: 24px;
-    margin-right: 10px;
+    margin-right: 15px;
+    cursor: pointer;
 }
 
 .header h1 {
-    font-size: 18px;
+    font-size: 20px;
     margin: 0;
 }
 
+/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #2e2e2e;
+    color: #fff;
 }
 
 th, td {
@@ -44,8 +50,10 @@ th, td {
 
 th {
     background-color: #3e3e3e;
+    text-transform: uppercase;
 }
 
+/* Status Labels */
 .status-active {
     background-color: #28a745;
     color: #fff;
@@ -54,29 +62,35 @@ th {
     text-align: center;
 }
 
-.status-inactive {
-    background-color: #dc3545;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-align: center;
-}
-
+/* API Test Button (Now Horizontally Arranged) */
 .action-test {
     background-color: #6c63ff;
     color: #fff;
-    padding: 5px 10px;
+    padding: 10px 15px;
     border-radius: 5px;
+    display: inline-block;
     text-align: center;
     text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+    font-size: 16px;
 }
 
+.action-test:hover {
+    background-color: #534bff;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     th, td {
         font-size: 12px;
-        padding: 8px;
+        padding: 10px;
     }
     .header h1 {
         font-size: 16px;
+    }
+    .action-test {
+        padding: 8px 12px;
+        font-size: 14px;
     }
 }
