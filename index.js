@@ -8,6 +8,7 @@ app.set('json spaces', 2);
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/static/index.html');
 });
+app.use('/site', express.static('static'));
 
 // YouTube Downloader API
 app.get('/api/youtube-downloader', (req, res) => {
