@@ -1,17 +1,16 @@
 {
   "name": "empire-md-api",
   "version": "1.0.0",
-  "description": "A simple YouTube downloader API built with Express and Play-DL",
+  "description": "A simple YouTube video downloader API using yt-dlp",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "play-dl": "^1.6.7"
+    "express": "^4.17.3"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=14.0.0"
   },
   "author": "Empire Tech",
   "license": "MIT"
