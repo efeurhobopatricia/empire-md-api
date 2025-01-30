@@ -23,7 +23,6 @@ app.get('/api/youtube-downloader', async (req, res) => {
 
         // YouTube video details
         const videoDetails = {
-            creator: Empire Tech,
             success: true,
             title: info.videoDetails.title,
             creator: info.videoDetails.author,
