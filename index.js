@@ -1,5 +1,5 @@
 const express = require('express');
-const ytdl = require('ytdl-core');
+const playdl = require('play-dl');
 const app = express();
 const port = 3000;
 
@@ -14,22 +14,23 @@ app.get('/api/youtube-downloader', async (req, res) => {
     const { url } = req.query;
 
     if (!url) {
-        return res.status(400).json({ error: 'You need to provide a URL.' });
+        return res.status(400).json({ success: false, error: 'You need to provide a URL.' });
     }
 
     try {
         // Fetch video info
-        const info = await ytdl.getInfo(url);
+        const info = await playdl.video_basic_info(url);
 
-        // YouTube video details
+        // Extract video details
         const videoDetails = {
             success: true,
-            title: info.videoDetails.title,
-            creator: info.videoDetails.author,
-            description: info.videoDetails.description,
+            creator: "Empire Tech", // Your branding
+            title: info.video_details.title,
+            uploader: info.video_details.channel.name, // Fixing the creator field
+            description: info.video_details.description,
+            thumbnail: info.video_details.thumbnails.pop().url, // Highest quality thumbnail
             videoUrl: url,
-            formats: info.formats,
-            downloadUrl: ytdl.chooseFormat(info.formats, { quality: 'highest' }).url, // URL for the highest quality video
+            downloadUrl: (await playdl.stream(url)).url, // URL for streaming the video
         };
 
         res.json(videoDetails);
