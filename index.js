@@ -5,20 +5,21 @@ const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.set('json spaces', 2);
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/static/index.html');
-});
-app.use('/site', express.static('static'));
+
+// Serve static files (HTML, CSS, JS) from the 'site' folder
+app.use(express.static('site'));
 
 // YouTube Downloader API
-app.get('/api/youtube-downloader', (req, res) => {
+app.get('/api/youtube-downloader', async (req, res) => {
     const { url } = req.query;
 
-      if (!url) return res.status(400).json({ error: 'need url' });
-    try {
+    if (!url) {
+        return res.status(400).json({ error: 'You need to provide a URL.' });
+    }
 
-    // fetch video info 
-const info = await ytdl.getInfo(url);
+    try {
+        // Fetch video info
+        const info = await ytdl.getInfo(url);
 
         // YouTube video details
         const videoDetails = {
