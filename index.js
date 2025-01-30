@@ -5,8 +5,9 @@ const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.set('json spaces', 2);
-app.use(express.static('site'));
+app.use(express.static('site')); // Serve static files if needed
 
+// YouTube Downloader API
 app.get('/api/youtube-downloader', async (req, res) => {
     const { url } = req.query;
 
@@ -31,6 +32,7 @@ app.get('/api/youtube-downloader', async (req, res) => {
     }
 });
 
+// Start the server
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Empire MD API is running at http://localhost:${port}`);
 });
