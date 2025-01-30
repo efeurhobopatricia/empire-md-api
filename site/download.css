@@ -1,74 +1,82 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #1e1e1e;
+    color: #ffffff;
     margin: 0;
     padding: 0;
 }
 
-/* Header */
-.header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Container */
 .container {
-    margin: 20px auto;
-    width: 90%;
-    max-width: 1000px;
-    background: white;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Table */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+
+.header i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.header h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    margin-top: 20px;
+    background-color: #2e2e2e;
 }
 
-table th {
-    background-color: #333;
-    color: white;
-    padding: 12px;
+th, td {
+    padding: 15px;
     text-align: left;
+    border: 1px solid #444;
 }
 
-table td {
-    padding: 12px;
-    border: 1px solid #ddd;
+th {
+    background-color: #3e3e3e;
 }
 
-/* Status */
 .status-active {
-    color: green;
-    font-weight: bold;
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .status-inactive {
-    color: red;
-    font-weight: bold;
-}
-
-/* Action Link (Button) */
-.action-test button {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 12px;
-    border: none;
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
     border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 14px;
+    text-align: center;
 }
 
-.action-test button:hover {
-    background-color: #0056b3;
+.action-test {
+    background-color: #6c63ff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    .header h1 {
+        font-size: 16px;
+    }
 }
