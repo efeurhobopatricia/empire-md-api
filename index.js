@@ -60,8 +60,8 @@ app.get('/api/download/spotify', async (req, res) => {
 
         const track = response.data;
         res.json({
-            success: true,
             creator: "Empire Tech",
+            success: true,
             title: track.name,
             artist: track.artists.map(a => a.name).join(', '),
             album: track.album.name,
