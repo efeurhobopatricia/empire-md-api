@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const rateLimit = require('express-rate-limit'); // For rate limiting
 
 const app = express();
 const port = 3000;
@@ -9,6 +10,35 @@ app.use(express.static('site'));
 app.use(express.urlencoded({ extended: true }));
 app.set('json spaces', 2);
 require('dotenv').config();
+
+// In-memory store for tracking daily requests
+let dailyRequests = {
+    empiretech: 0,
+};
+
+// API key middleware
+function apiKeyMiddleware(req, res, next) {
+    const apiKey = req.query.api_key; // Extract the API key from the query string
+
+    if (!apiKey) {
+        return res.status(400).json({ error: 'API key is required.' });
+    }
+
+    // Validate API key
+    if (apiKey === 'empiretech') {
+        if (dailyRequests.empiretech >= 100) {
+            return res.status(429).json({ error: 'Daily request limit exceeded for empiretech.' });
+        }
+        dailyRequests.empiretech += 1; // Increment daily request count for empiretech
+    } else if (apiKey === 'empirelimit') {
+        // Unlimited requests for empirelimit
+        // Do nothing to restrict the number of requests
+    } else {
+        return res.status(403).json({ error: 'Invalid API key.' });
+    }
+
+    next(); // Proceed to the next middleware or route handler
+}
 
 // Function to get Spotify Access Token
 async function getSpotifyAccessToken() {
@@ -35,9 +65,9 @@ function extractTrackId(url) {
     return match ? match[1] : null;
 }
 
-// Spotify API Route
-app.get('/api/download/spotify', async (req, res) => {
-    const { url } = req.query;
+// Spotify API Route - Download
+app.get('/api/spotify/download', apiKeyMiddleware, async (req, res) => {
+    const { api_key, url } = req.query;
 
     if (!url) {
         return res.status(400).json({ error: 'You need to provide a Spotify track URL.' });
