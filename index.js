@@ -66,7 +66,7 @@ function extractTrackId(url) {
 }
 
 // Spotify API Route - Download
-app.get('/api/spotify/download', apiKeyMiddleware, async (req, res) => {
+app.get('/api/download/spotify', apiKeyMiddleware, async (req, res) => {
     const { api_key, url } = req.query;
 
     if (!url) {
